@@ -1,5 +1,5 @@
 - name: esxi-vcenter
-  distro: esxi-6.7.0-20190802001-STANDARD
+  distro: esxi-7.0U3C-19193900-STANDARD
   memory: 12000
   root_disk_size: 30
   vcpus: 2

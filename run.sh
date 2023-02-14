@@ -10,7 +10,7 @@ fi
 VERSION=$(basename -s .iso ${iso_path})
 vl up
 vl ansible_inventory>inventory
-ansible-playbook install_vcsa.yml -i inventory -e vcenter_instance.installation.iso_path=${iso_path}
+ansible-playbook install_vcsa.yml -i inventory -e vcenter_instance.installation.iso_path=${iso_path} -vvv --ask-become-pass
 
 echo 'vcenter ansible_host=192.168.123.90 ansible_user=root ansible_password="!234AaAa56" ansible_python_interpreter=/usr/bin/python ansible_ssh_common_args="-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"' > inventory
 

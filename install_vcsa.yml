@@ -4,6 +4,7 @@
     gather_facts: False
     vcsa_ip: '192.168.123.90'
     datastore_name: local
+  become: true
   tasks:
   - name: add the host in /etc/hosts
     lineinfile:
@@ -19,7 +20,7 @@
       regexp: '^192.168.123.1 gateway.test gateway\s.*'
       line: "192.168.123.1 gateway.test gateway"
       state: present
-    become: yes
+    # become: yes
 
   - name: Reload the dnsmasq instances
     command: sudo pkill -HUP dnsmasq
@@ -39,6 +40,9 @@
       switch: "vSwitch0"
       portgroup: "VM Network"
       validate_certs: no
+    # Probably you need to set 
+    # vars:
+    #   ansible_python_interpreter: <your path>
 
   - import_role:
       name: vcenter-instance
